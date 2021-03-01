@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(main)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(main main.cpp)
+project(LinkedListDemo)
 
-install(TARGETS main)
+add_executable(LinkedListDemo src/LinkedListDemo.cpp)
 
-enable_testing()
-add_test(NAME main COMMAND main)
+set_property(TARGET LinkedListDemo PROPERTY CXX_STANDARD 14)
 
+install(TARGETS LinkedListDemo)
 
 IF (WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	target_link_libraries(main -static)
+	target_link_libraries(LinkedListDemo -static)
 ENDIF()

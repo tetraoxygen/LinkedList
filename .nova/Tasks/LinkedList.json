@@ -1,0 +1,21 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\n\ncd build\nmake"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\n\nrm -rf build\nmkdir build\ncd build\ncmake .."
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\n\ncd build\nmake && .\/LinkedListDemo"
+    }
+  },
+  "environment" : {
+    "EXECUTABLE_NAME" : "main"
+  },
+  "identifier" : "A3245573-D456-445A-B66F-466BFACC5A1B",
+  "openLogOnRun" : "fail"
+}
