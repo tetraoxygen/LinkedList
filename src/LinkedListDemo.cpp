@@ -9,37 +9,36 @@
 * --------------------------- */
 
 #include <iostream>
+#include <fstream>
+#include <iterator>
 #include "LinkedList.cpp"
 
 int main() {
-	LinkedList ll = LinkedList();
-	ll.print();
-	
-	std::string test = "test";
-	std::string aardvark = "aardvark";
-	
-	std::string charlie = "charlie";
-	std::string sarah = "sarah";
-	
-	std::string zebra = "zebra";
 
-	std::string asdfadsf = "aaaaaaa";
+	LinkedList ll = LinkedList();
+
+
+	std::ifstream file("linkListTest.txt");
+
+	std::string str;
+	char i;
 	
-	ll.insert(aardvark);
-	ll.print();
-	
-	ll.insert(test);
-	ll.print();
-	
-	ll.insert(asdfadsf);
-	ll.print();
-	
-	ll.insert(charlie);
-	ll.print();
-	
-	ll.insert(sarah);
-	ll.print();
-	
-	ll.insert(zebra);
-	ll.print();
+	while(file >> i >> str || file >> i) {
+	std::cout << i << std::endl;
+		switch (i) {
+			case 'a':
+				if (ll.insert(str)) {
+					std::cout << "Added " << str << std::endl;
+				} else {
+					std::cout << str << " cannot be added again" << std::endl;
+				}
+				break;
+			case 'P':
+				std::cout << "List Contains " << ll.count() << " names: ";
+				ll.print();
+				break;
+			default:
+				std::cout << "Not available" << std::endl;
+		}
+	}
 }
