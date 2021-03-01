@@ -2,7 +2,7 @@
 #include <iostream>
 
 LinkedList::LinkedList() {
-	head = new Node { .data = "adsf", .next = nullptr };
+	head = nullptr;
 };
 
 void LinkedList::print() {
@@ -34,6 +34,13 @@ bool LinkedList::insert(std::string str) {
 	bool hasAddedItem = false;
 	Node* current = head;
 	Node* previous = nullptr;
+	
+	// Handle the first element in the list
+	if (head == nullptr) {
+		head = new Node { .data = str, .next = nullptr };
+		return true;
+	}
+	
 	while (current != nullptr) {
 		// If the strings are identical
 		

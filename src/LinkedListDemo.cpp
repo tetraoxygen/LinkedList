@@ -23,10 +23,11 @@ int main() {
 	std::string str;
 	char i;
 	
-	while(file >> i >> str || file >> i) {
+	while(file >> i) {
 	std::cout << i << std::endl;
 		switch (i) {
 			case 'a':
+				file >> str;
 				if (ll.insert(str)) {
 					std::cout << "Added " << str << std::endl;
 				} else {
