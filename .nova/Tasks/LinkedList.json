@@ -16,6 +16,5 @@
   "environment" : {
     "EXECUTABLE_NAME" : "main"
   },
-  "identifier" : "A3245573-D456-445A-B66F-466BFACC5A1B",
-  "openLogOnRun" : "fail"
+  "identifier" : "A3245573-D456-445A-B66F-466BFACC5A1B"
 }

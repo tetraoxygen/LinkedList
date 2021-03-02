@@ -24,7 +24,6 @@ int main() {
 	char i;
 	
 	while(file >> i) {
-	std::cout << i << std::endl;
 		switch (i) {
 			case 'a':
 				file >> str;
@@ -34,11 +33,36 @@ int main() {
 					std::cout << str << " cannot be added again" << std::endl;
 				}
 				break;
+			case 'r':
+				file >> str;
+				if (ll.remove(str)) {
+					std::cout << "Removing " << str << std::endl;
+				} else {
+					std::cout << "Couldn't remove " << str << std::endl;
+				}
+				break;
+			case 'f':
+				file >> str;
+				if (ll.find(str) != 0) {
+					std::cout << str << " is at position " << ll.find(str) << std::endl;
+				} else {
+					std::cout << str << " is not in the list" << std::endl;
+				}
+				break;
 			case 'P':
-				std::cout << "List Contains " << ll.count() << " names: ";
+				if (ll.count() == 1) {
+					std::cout << "List contains " << ll.count() << " name: ";
+				} else {
+					std::cout << "List contains " << ll.count() << " names: ";
+				}
 				ll.print();
 				break;
+			case 'R':
+				ll.removeAll();
+				std::cout << "Removing all entries" << std::endl;
+				break;
 			default:
+				file >> str;
 				std::cout << "Not available" << std::endl;
 		}
 	}

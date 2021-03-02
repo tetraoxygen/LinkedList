@@ -1,10 +1,27 @@
+/** --------------------------- 
+* @file		LinkedList.cpp
+* @author	Charlie Welsh
+* @version	1.0
+*
+* CS162-01 - Assignment 4.2
+*	Implements the LinkedList class.
+*
+* --------------------------- */
+
 #include "LinkedList.h"
 #include <iostream>
 
+// --------------------------- 
 LinkedList::LinkedList() {
 	head = nullptr;
 };
 
+// --------------------------- 
+LinkedList::~LinkedList() {
+	removeAll();
+}
+
+// --------------------------- 
 void LinkedList::print() {
 	Node* current = head;
 	while (current != nullptr) {
@@ -19,6 +36,7 @@ void LinkedList::print() {
 	std::cout << std::endl;
 }
 
+// --------------------------- 
 int LinkedList::count() {
 	int count = 0;
 	Node* current = head;
@@ -30,6 +48,7 @@ int LinkedList::count() {
 	return count;
 }
 
+// --------------------------- 
 bool LinkedList::insert(std::string str) {
 	bool hasAddedItem = false;
 	Node* current = head;
@@ -63,4 +82,56 @@ bool LinkedList::insert(std::string str) {
 	previous->next = new Node { .data = str, .next = nullptr };
 
 	return true;
+}
+
+// --------------------------- 
+bool LinkedList::remove(std::string str) {
+	Node* current = head;
+	Node* previous = nullptr;
+	while (current != nullptr) {
+		Node* next = current->next;
+		if (str.compare(current->data) == 0) {
+			if (previous) {
+				previous->next = next;
+			} else {
+				head = next;
+			}
+			delete current;
+			return true;
+		}
+		
+		previous = current;
+		current = next;
+	}
+	return false;
+}
+
+// --------------------------- 
+int LinkedList::find(std::string str) {
+	int count = 0;
+	Node* current = head;
+	while (current != nullptr) {
+		count = count += 1;
+		
+		if (str.compare(current->data) == 0) {
+			return count;
+		}
+			
+		current = current->next;
+	}
+	return 0;
+}
+
+// --------------------------- 
+void LinkedList::removeAll() {
+	Node* current = head;
+	while (current != nullptr) {
+		Node* next = current->next;
+		delete current;
+		if (!current->next) {
+			head = nullptr;
+		}
+		
+		current = next;
+	}
 }
