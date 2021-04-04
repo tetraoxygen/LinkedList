@@ -15,5 +15,5 @@ IF (WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 ENDIF()
 
 if (MSVC)
-	add_compiler_options(/std:c++latest)
+	add_compile_options(/std:c++latest)
 endif()
