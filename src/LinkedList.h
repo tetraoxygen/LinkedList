@@ -4,7 +4,7 @@
 * @version	1.0
 *
 * CS162-01 - Assignment 4.2
-*	Headers for the LinkedList class and its methods, as well as the Node struct.
+*	Headers for the LinkedList class and its methods, as well as the Node<int> struct.
 *
 * --------------------------- */
 
@@ -12,21 +12,22 @@
 #define LINKEDLIST_H
 
 #include <string>
+#include <iostream>
 
-struct Node {
-	std::string data;
+template <class T> struct Node {
+	T data;
 	Node* next;
 };
 
-class LinkedList {
+template <class T> class LinkedList {
 	public: 
 		/**
-		*	Initializes a LinkedList with the head set to a Node object 
+		*	Initializes a LinkedList with the head set to a Node<int> object 
 		*/
 		LinkedList();
 		
 		/**
-		*	Destructor for LinkedList; it deletes all the Node()s in the list. 
+		*	Destructor for LinkedList; it deletes all the Node<int>()s in the list. 
 		*/
 		~LinkedList();
 		
@@ -46,21 +47,21 @@ class LinkedList {
 		*		@param str - the string to insert
 		*		@return true if the item can be inserted, false if it can't.
 		*/
-		bool insert(std::string str);
+		bool insert(T& data);
 		
 		/**
 		*	Removes a string from the list. 
 		*		@param str - the string to remove
 		*		@return true if the item can be removed, false if it can't.
 		*/
-		bool remove(std::string str);
+		bool remove(T& data);
 		
 		/**
 		*	Finds a string's position in the list.
 		*		@param str - the string to find
 		*		@return the string's position in the list, 0 if the item can't be found.
 		*/
-		int find(std::string str);
+		int find(T& data);
 		
 		/**
 		*	Removes all elements in the list.
@@ -68,7 +69,7 @@ class LinkedList {
 		void removeAll();
 		
 	private:
-		Node* head;
+		Node<T>* head;
 };
 
 #endif

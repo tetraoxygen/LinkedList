@@ -15,7 +15,7 @@
 
 int main() {
 
-	LinkedList ll = LinkedList();
+	LinkedList<std::string> ll;
 
 
 	std::ifstream file("linkListTest.txt");
@@ -50,11 +50,6 @@ int main() {
 				}
 				break;
 			case 'P':
-				if (ll.count() == 1) {
-					std::cout << "List contains " << ll.count() << " name: ";
-				} else {
-					std::cout << "List contains " << ll.count() << " names: ";
-				}
 				ll.print();
 				break;
 			case 'R':
