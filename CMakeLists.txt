@@ -13,3 +13,7 @@ install(TARGETS LinkedListDemo)
 IF (WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 	target_link_libraries(LinkedListDemo -static)
 ENDIF()
+
+if (MSVC)
+	add_compiler_options(/std:c++latest)
+endif()
