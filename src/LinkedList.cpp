@@ -8,7 +8,7 @@
 *
 * --------------------------- */
 
-#include "LinkedList.h"
+#include "linkedList.h"
 
 // --------------------------- 
 template<class T> LinkedList<T>::LinkedList() {
@@ -31,7 +31,7 @@ template <class T> void LinkedList<T>::print() {
 		elementDescriptor = " elements:\n";
 	}
 	
-	std::cout << "The list contains the following " << this->count() << elementDescriptor << std::endl;
+	std::cout << "The list contains the following " << this->count() << elementDescriptor;
 	
 	Node<T>* current = head;
 	
@@ -44,6 +44,7 @@ template <class T> void LinkedList<T>::print() {
 		
 		current = current->next;
 	}
+	std::cout << std::endl;
 }
 
 // --------------------------- 
@@ -59,42 +60,48 @@ template <class T> int LinkedList<T>::count() {
 }
 
 // --------------------------- 
-template <class T> bool LinkedList<T>::insert(T& data) {
-	bool hasAddedItem = false;
-	Node<T>* current = head;
-	Node<T>* previous = nullptr;
-	
-	// Handle the first element in the list
+template <class T> bool LinkedList<T>::prepend(T data) {
+	// Handle the being the only element in the list
 	if (head == nullptr) {
 		head = new Node<T> { .data = data, .next = nullptr };
 		return true;
 	}
 	
-	while (current != nullptr) {
-		// If the strings are identical
-		if (data == current->data) {
-			return false;
-		}
-		
-		if (data.compare(current->data) < 0) {
-			if (previous) {
-				previous->next = new Node<T> { .data = data, .next = current };
-			} else {
-				head = new Node<T> { .data = data, .next = current };
-			}
-			return true;
-		}
-		previous = current;
-		current = current->next;
+	// Check that the data isn't already in the list
+	if (this->find(data)) {
+		return false;
 	}
-
-	previous->next = new Node<T> { .data = data, .next = nullptr };
-
+	
+	head = new Node<T> { .data = data, .next = head };
 	return true;
 }
 
 // --------------------------- 
-template <class T> bool LinkedList<T>::remove(T& data) {
+template <class T> bool LinkedList<T>::append(T data) {
+	// Handle the being the only element in the list
+	if (head == nullptr) {
+		head = new Node<T> { .data = data, .next = nullptr };
+		return true;
+	}
+	
+	// Check that the data isn't already in the list
+	if (this->find(data)) {
+		return false;
+	}
+	
+	Node<T>* current = head;
+	Node<T>* previous = current;
+	while (current != nullptr) {
+		previous = current;
+		current = current->next;
+	}
+	
+	previous->next = new Node<T> { .data = data, .next = nullptr };
+	return true;
+}
+
+// --------------------------- 
+template <class T> bool LinkedList<T>::remove(T data) {
 	Node<T>* current = head;
 	Node<T>* previous = nullptr;
 	while (current != nullptr) {
@@ -116,7 +123,7 @@ template <class T> bool LinkedList<T>::remove(T& data) {
 }
 
 // --------------------------- 
-template <class T> int LinkedList<T>::find(T& data) {
+template <class T> int LinkedList<T>::find(T data) {
 	int count = 0;
 	Node<T>* current = head;
 	while (current != nullptr) {

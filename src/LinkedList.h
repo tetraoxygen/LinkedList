@@ -11,8 +11,8 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-#include <string>
 #include <iostream>
+#include <string>
 
 template <class T> struct Node {
 	T data;
@@ -43,25 +43,32 @@ template <class T> class LinkedList {
 		int count();
 		
 		/**
-		*	Inserts a new string in the list in alphabetical order. Duplicates are disallowed.
-		*		@param str - the string to insert
+		*	Inserts data at the beginning of the list. Duplicates are disallowed.
+		*		@param data - the data to insert
 		*		@return true if the item can be inserted, false if it can't.
 		*/
-		bool insert(T& data);
+		bool prepend(T data);
 		
 		/**
-		*	Removes a string from the list. 
-		*		@param str - the string to remove
+		*	Inserts data at the end of the list. Duplicates are disallowed.
+		*		@param data - the data to insert
+		*		@return true if the item can be inserted, false if it can't.
+		*/
+		bool append(T data);
+		
+		/**
+		*	Removes an element from the list. 
+		*		@param data - the element to remove
 		*		@return true if the item can be removed, false if it can't.
 		*/
-		bool remove(T& data);
+		bool remove(T data);
 		
 		/**
-		*	Finds a string's position in the list.
-		*		@param str - the string to find
-		*		@return the string's position in the list, 0 if the item can't be found.
+		*	Finds a piece of data's position in the list.
+		*		@param str - the data to find
+		*		@return the data's position in the list, 0 if the item can't be found.
 		*/
-		int find(T& data);
+		int find(T data);
 		
 		/**
 		*	Removes all elements in the list.

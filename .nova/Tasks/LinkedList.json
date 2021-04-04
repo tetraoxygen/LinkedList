@@ -6,7 +6,7 @@
     },
     "clean" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\n\nrm -rf build\nmkdir build\ncd build\ncmake .."
+      "script" : "#!\/bin\/sh\n\nrm -rf build\nmkdir build\ncd build\ncmake -DCMAKE_BUILD_TYPE=Debug .."
     },
     "run" : {
       "enabled" : true,

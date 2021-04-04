@@ -8,57 +8,57 @@
 *
 * --------------------------- */
 
-#include <iostream>
-#include <fstream>
-#include <iterator>
-#include "LinkedList.cpp"
+#include "linkedList.cpp"
+
+using namespace std;
 
 int main() {
 
-	LinkedList<std::string> ll;
+	// test template with ints --------------------------------
+	LinkedList<int> intList; 
+	intList.prepend(10);
+	intList.prepend(20);
+	intList.prepend(5);
+	intList.append(15);
+	intList.append(25);
+	intList.print();
 
+	cout << "5 is in position " << intList.find(5) << endl;
+	cout << "15 is in position " << intList.find(15) << endl;
+	cout << "20 is in position " << intList.find(20) << endl;
+	cout << "8 is in position " << intList.find(8) << endl;
 
-	std::ifstream file("linkListTest.txt");
-
-	std::string str;
-	char i;
+	intList.remove(15);
+	intList.remove(5);
+	intList.remove(25);
+	intList.print();
 	
-	while(file >> i) {
-		switch (i) {
-			case 'a':
-				file >> str;
-				if (ll.insert(str)) {
-					std::cout << "Added " << str << std::endl;
-				} else {
-					std::cout << str << " cannot be added again" << std::endl;
-				}
-				break;
-			case 'r':
-				file >> str;
-				if (ll.remove(str)) {
-					std::cout << "Removing " << str << std::endl;
-				} else {
-					std::cout << "Couldn't remove " << str << std::endl;
-				}
-				break;
-			case 'f':
-				file >> str;
-				if (ll.find(str) != 0) {
-					std::cout << str << " is at position " << ll.find(str) << std::endl;
-				} else {
-					std::cout << str << " is not in the list" << std::endl;
-				}
-				break;
-			case 'P':
-				ll.print();
-				break;
-			case 'R':
-				ll.removeAll();
-				std::cout << "Removing all entries" << std::endl;
-				break;
-			default:
-				file >> str;
-				std::cout << "Not available" << std::endl;
-		}
-	}
+	intList.removeAll();
+	intList.print();
+	cout << endl << endl;
+	
+	// test on list of chars --------------------------------
+	LinkedList<char>* charList = new LinkedList<char>;
+	charList->append('k');
+	charList->append('s');
+	charList->prepend('r');
+	charList->prepend('o');
+	charList->prepend('w');
+	charList->print();
+
+	charList->remove('r');
+	charList->remove('w');
+	charList->remove('s');
+	charList->print();
+
+	charList->removeAll();
+	charList->print();
+	delete charList;
+
+	// test it on Students ------------------------------------
+	// Add code here that tests it on Student objects
+
+	
+
+	return 1;
 }
