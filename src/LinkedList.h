@@ -3,8 +3,8 @@
 * @author	Charlie Welsh
 * @version	1.0
 *
-* CS162-01 - Assignment 4.2
-*	Headers for the LinkedList class and its methods, as well as the Node<int> struct.
+* CS260-01 - Assignment 1
+*	Implements an unordered linked list.
 *
 * --------------------------- */
 

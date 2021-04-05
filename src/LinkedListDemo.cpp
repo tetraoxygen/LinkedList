@@ -3,12 +3,13 @@
 * @author	Charlie Welsh
 * @version	1.0
 *
-* CS162-01 - Assignment 4.1
-*	Implements a linked list.
+* CS260-01 - Assignment 1
+*	Demonstrates a linked list.
 *
 * --------------------------- */
 
-#include "linkedList.cpp"
+#include "LinkedList.cpp"
+#include "Student.h"
 
 using namespace std;
 
@@ -54,11 +55,28 @@ int main() {
 	charList->removeAll();
 	charList->print();
 	delete charList;
+	cout << endl << endl;
 
 	// test it on Students ------------------------------------
-	// Add code here that tests it on Student objects
-
+	LinkedList<Student>* studentList = new LinkedList<Student>;
+	studentList->append(Student("Bjarne", 'C'));
+	studentList->append(Student("Bjarne", '+'));
+	studentList->prepend(Student("Brian", 'C'));
+	studentList->append(Student("Dennis", 'C'));
+	studentList->print();
+	cout << "Bjarne is in position " << studentList->find(Student("Bjarne", 'C')) << endl;
+	cout << "Brian is in position " << studentList->find(Student("Brian", 'C')) << endl;
+	cout << "Dennis is in position " << studentList->find(Student("Dennis", 'C')) << endl;
 	
-
+	studentList->remove(Student("Bjarne", 'C'));
+	studentList->remove(Student("Brian", 'C'));
+	studentList->remove(Student("Dennis", 'C'));
+	studentList->print();
+	
+	studentList->removeAll();
+	studentList->print();
+	
+	delete studentList;
+	
 	return 1;
 }
